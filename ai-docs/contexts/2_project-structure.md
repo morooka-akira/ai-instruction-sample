@@ -1,6 +1,7 @@
 # プロジェクト構造
 
 ## ディレクトリ構成
+
 ```
 .
 ├── app/                    # Next.js App Router
@@ -15,7 +16,6 @@
 ├── public/               # 静的ファイル
 ├── ai-docs/              # AI アシスタント用ドキュメント
 │   ├── contexts/         # コンテキストファイル
-│   └── claude.md         # Claude 設定
 ├── .github/
 │   └── workflows/
 │       └── ci.yml        # GitHub Actions 設定
@@ -34,6 +34,7 @@
 ```
 
 ## ファイル配置のルール
+
 - コンポーネントは `app/` または `components/` に配置
 - ユーティリティ関数は `lib/` に配置
 - テストファイルは対象ファイルと同じディレクトリに配置

@@ -38,7 +38,7 @@ WYSIWYGエディタとドラッグ&ドロップ機能を搭載したTODOアプ�
 
 ### 前提条件
 
-- Node.js 18.x 以上
+- Node.js 20.x 以上（Vite 7.0.0の要件）
 - Docker と Docker Compose
 - Git
 

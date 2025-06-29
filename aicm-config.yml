@@ -1,0 +1,22 @@
+version: "1.0"
+output_mode: split
+base_docs_dir: ./ai-docs
+agents:
+  claude:
+    import_files:
+      - path: ./ai-docs/contexts/important-notes.md
+        note: "重要な注意事項とセキュリティ"
+      - path: ./ai-docs/contexts/project-overview.md
+        note: "プロジェクトの技術スタック概要"
+      - path: ./ai-docs/contexts/development-commands.md
+        note: "開発で使用するコマンド一覧"
+      - path: ./ai-docs/contexts/code-style.md
+        note: "コードスタイルとフォーマット設定"
+      - path: ./ai-docs/contexts/testing-strategy.md
+        note: "テストの書き方と実行方法"
+      - path: ./ai-docs/contexts/environment-setup.md
+        note: "環境変数とDocker設定"
+      - path: ./ai-docs/contexts/ci-pipeline.md
+        note: "GitHub Actions CI/CD設定"
+      - path: ./ai-docs/contexts/project-structure.md
+        note: "ディレクトリ構成とファイル配置ルール"

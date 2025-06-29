@@ -2,20 +2,43 @@
 
 Next.js プロジェクトです。Biome でコード整形とLint、Vitest でテスト、PostgreSQL をデータベースとして使用します。
 
+## アプリケーション
+
+### TODOアプリ 📝
+
+WYSIWYGエディタとドラッグ&ドロップ機能を搭載したTODOアプリが利用できます。
+
+**機能:**
+- ✅ **リッチテキスト入力**: Tiptapを使用したWYSIWYGエディタ
+- ✅ **ドラッグ&ドロップ**: TODO項目の直感的な並び替え
+- ✅ **完了管理**: チェックボタンでTODOを完了済みに移動
+- ✅ **履歴確認**: 完了済みTODOの一覧表示と完了日時の記録
+- ✅ **データ永続化**: ブラウザのlocalStorageに自動保存
+
+**アクセス方法:**
+1. 開発サーバーを起動: `pnpm dev`
+2. [http://localhost:3000](http://localhost:3000) でホームページを開く
+3. 「TODOアプリを使ってみる」ボタンをクリック
+
 ## 技術スタック
 
-- **フロントエンド**: Next.js 15 (App Router)
-- **スタイリング**: Tailwind CSS
-- **コード整形・Lint**: Biome
+- **フロントエンド**: Next.js 15 (App Router) + TypeScript
+- **スタイリング**: Tailwind CSS + PostCSS
+- **コード整形・Lint**: Biome (ESLint/Prettierの代替)
 - **テスト**: Vitest + React Testing Library
 - **データベース**: PostgreSQL (Docker Compose)
 - **CI**: GitHub Actions
+- **その他**: 
+  - **WYSIWYGエディタ**: Tiptap
+  - **ドラッグ&ドロップ**: @dnd-kit
+  - **アイコン**: Lucide React
+  - **パッケージマネージャー**: pnpm
 
 ## セットアップ
 
 ### 前提条件
 
-- Node.js 18.x 以上
+- Node.js 20.x 以上（Vite 7.0.0の要件）
 - Docker と Docker Compose
 - Git
 
@@ -128,19 +151,43 @@ GitHub Actions を使用して以下を自動実行します：
 │   ├── layout.tsx         # ルートレイアウト
 │   ├── page.tsx           # ホームページ
 │   ├── page.test.tsx      # ホームページのテスト
-│   └── globals.css        # グローバルスタイル
-├── test/                   # テスト設定
+│   ├── globals.css        # グローバルスタイル
+│   └── todo/              # TODOアプリ
+│       ├── layout.tsx     # TODOアプリのレイアウト
+│       ├── page.tsx       # TODOアプリのメインページ
+│       └── page.test.tsx  # TODOアプリのテスト
+├── components/            # 共通コンポーネント
+│   ├── TodoEditor.tsx     # WYSIWYGエディタ
+│   ├── TodoList.tsx       # ドラッグ&ドロップ対応TODOリスト
+│   ├── TodoItem.tsx       # 個別TODO項目
+│   ├── CompletedTodos.tsx # 完了済みTODO管理
+│   └── *.test.tsx         # 各コンポーネントのテスト
+├── hooks/                 # カスタムフック
+│   ├── useTodos.ts        # TODO操作ロジック
+│   └── useTodos.test.ts   # カスタムフックのテスト
+├── lib/                   # ユーティリティ関数
+│   ├── todo-utils.ts      # TODO操作ヘルパー
+│   └── storage.ts         # localStorage操作
+├── types/                 # 型定義
+│   └── todo.ts            # TODO関連の型
+├── ai-docs/               # AI アシスタント用ドキュメント
+│   ├── contexts/          # コンテキストファイル
+│   ├── designs/           # 設計ドキュメント
+│   └── works/             # 作業履歴
+├── test/                  # テスト設定
 │   └── setup.ts           # Vitest セットアップ
 ├── .github/
 │   └── workflows/
 │       └── ci.yml         # GitHub Actions 設定
-├── docker-compose.yml      # Docker Compose 設定
+├── docker-compose.yml     # Docker Compose 設定
 ├── biome.json             # Biome 設定
 ├── vitest.config.ts       # Vitest 設定
 ├── next.config.ts         # Next.js 設定
 ├── tailwind.config.js     # Tailwind CSS 設定
 ├── postcss.config.js      # PostCSS 設定
 ├── tsconfig.json          # TypeScript 設定
+├── aicm-config.yml        # AICM 設定
+├── CLAUDE.md              # Claude Code用プロジェクト指示
 ├── .env.example           # 環境変数のサンプル
 ├── package.json           # パッケージ設定
 └── pnpm-lock.yaml         # pnpm ロックファイル
